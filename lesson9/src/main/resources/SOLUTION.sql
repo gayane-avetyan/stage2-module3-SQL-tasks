@@ -1,0 +1,3 @@
+select * from student s join mark m on s.id = m.student_id where m.mark in (select avg(mark) from mark group by mark having mark > 8);
+select s.id, s.name from student s join mark m on s.id = m.student_id where mark in (select min(mark) from mark group by mark having min(mark) > 7);
+select s.id, s.name from student s join payment p on s.id = p.student_id where s.id in (select student_id from payment group by student_id having count(student_id) > 2) and p.payment_date between '20190101' and '20191231';
